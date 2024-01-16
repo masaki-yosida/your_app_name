@@ -3,6 +3,7 @@
 
 <%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
   <%= form.text_field :title, placeholder: "タスクを入力してください" %>
+  <%= form.text_field :description, placeholder: "タスクを入力してください" %>
   <%= form.datetime_local_field :start_time, placeholder: "開始日時を入力してください" %>
   <%= form.datetime_local_field :end_time, placeholder: "終了日時を入力してください" %>
   <%= form.submit "追加する" %>
@@ -10,6 +11,10 @@
 
 <ul>
   <% @tasks.each do |task| %>
+    <li><%= task.title %></li>
+    <li><%= task.description%></li>
+    <li><%= task.start_time %></li>
+    <li><%= task.end_time %></li>
     <li><%= task.title %></li>
   <% end %>
 </ul>
