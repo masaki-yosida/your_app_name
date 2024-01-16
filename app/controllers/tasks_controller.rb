@@ -7,16 +7,15 @@ class TasksController < ApplicationController
   end
 
   def create
-    @new_task = Task.new(task_params)
-
-if @new_task.save
-  redirect_to tasks_path, notice: 'タスクが作成されました。'
-else
-  Rails.logger.debug @new_task.errors.full_messages
-  @tasks = Task.all
-  render :index
-end
-end
+    @task = Task.new(task_params)
+    @task.user_id = current_user.id  # ログイン中のユーザーのIDをセット
+  
+    if @task.save
+      redirect_to tasks_path, notice: 'Task was successfully created.'
+    else
+      render :new
+    end
+  end
   
 
   private
