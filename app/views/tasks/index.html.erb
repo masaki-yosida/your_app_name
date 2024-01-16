@@ -14,6 +14,10 @@
 </ul>
 
 
+
+
+
+
 <%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
   <%= form.text_field :title, placeholder: "タスクを入力してください" %>
   <%= form.text_field :description, placeholder: "内容" %>
@@ -30,7 +34,6 @@
 
 
 
-
 <ul>
   <% current_user.tasks.each do |task| %>
     <li>タイトル <%= task.title %></li>
@@ -41,5 +44,16 @@
     <% # 作業時間を計算して表示 %>
     <% work_duration = task.end_time - task.start_time %>
     <li>作業時間 <%= format_duration(work_duration) %></li>
+  <% end %>
+</ul>
+
+<h2>作業ごとの作業時間</h2>
+<ul>
+  <% if @total_duration_by_title.present? %>
+    <% @total_duration_by_title.each do |title, total_duration| %>
+      <li><%= "#{title}: #{format_duration(total_duration)}" %></li>
+    <% end %>
+  <% else %>
+    <li>No tasks available</li>
   <% end %>
 </ul>

@@ -4,25 +4,36 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   def index
     @tasks = current_user.tasks
+    @total_duration_by_title = calculate_total_duration_by_title(@tasks)
+
     @new_task = Task.new
   end
-
-  def create
-    @task = Task.new(task_params)
-    @task.user_id = current_user.id  # ログイン中のユーザーのIDをセット
   
-    if @task.save
-      redirect_to tasks_path, notice: 'Task was successfully created.'
+  def create
+    @new_task = current_user.tasks.build(task_params)
+
+    if @new_task.save
+      redirect_to tasks_path, notice: 'タスクが作成されました。'
     else
-      render :new
+      @tasks = current_user.tasks
+      @total_duration_by_title = current_user.tasks.group(:title).sum('end_time - start_time')
+      render :index
     end
   end
-  
 
   private
 
   def task_params
     params.require(:task).permit(:title, :description, :start_time, :end_time)
   end
-end
 
+  def calculate_total_duration_by_title(tasks)
+    total_duration_by_title = Hash.new(0)
+
+    tasks.each do |task|
+      total_duration_by_title[task.title] += task.duration
+    end
+
+    total_duration_by_title
+end
+end
