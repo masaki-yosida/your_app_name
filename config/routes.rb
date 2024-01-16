@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
   resources :tasks
   root to: 'tasks#index'
   devise_scope :user do
