@@ -1,5 +1,8 @@
 <!-- app/views/tasks/index.html.erb -->
 <h1>Hello, Tasks!</h1>
+<%= link_to 'Sign up', new_user_registration_path %>
+
+
 
 <%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
   <%= form.text_field :title, placeholder: "タスクを入力してください" %>
