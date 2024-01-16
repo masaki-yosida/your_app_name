@@ -1,1 +1,15 @@
+<!-- app/views/tasks/index.html.erb -->
 <h1>Hello, Tasks!</h1>
+
+<%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
+  <%= form.text_field :title, placeholder: "タスクを入力してください" %>
+  <%= form.datetime_local_field :start_time, placeholder: "開始日時を入力してください" %>
+  <%= form.datetime_local_field :end_time, placeholder: "終了日時を入力してください" %>
+  <%= form.submit "追加する" %>
+<% end %>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= task.title %></li>
+  <% end %>
+</ul>
