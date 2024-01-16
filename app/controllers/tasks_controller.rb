@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks
     @total_duration_by_title = calculate_total_duration_by_title(@tasks)
+    @users = User.all
 
     @new_task = Task.new
   end
