@@ -6,6 +6,7 @@
 <ul>
   <% if user_signed_in? %>
     <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+    <li><%= current_user.name %></li>
   <% else %>
     <li><%= link_to 'Sign up', new_user_registration_path %></li>
     <li><%= link_to 'Log in', new_user_session_path %></li>
@@ -16,17 +17,29 @@
 <%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
   <%= form.text_field :title, placeholder: "タスクを入力してください" %>
   <%= form.text_field :description, placeholder: "タスクを入力してください" %>
-  <%= form.datetime_local_field :start_time, placeholder: "開始日時を入力してください" %>
-  <%= form.datetime_local_field :end_time, placeholder: "終了日時を入力してください" %>
+   <% current_time = Time.now.strftime("%Y-%m-%dT%H:%M") %>
+  <%= form.datetime_local_field :start_time, value: current_time, placeholder: "開始日時を入力してください" %>
+  <% current_time = Time.now.strftime("%Y-%m-%dT%H:%M") %>
+  <%= form.datetime_local_field :end_time, value: current_time, placeholder: "終了日時を入力してください" %>
   <%= form.submit "追加する" %>
 <% end %>
 
+
+
+
+
+
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task.title %></li>
-    <li><%= task.description%></li>
-    <li><%= task.start_time %></li>
-    <li><%= task.end_time %></li>
-    <li><%= task.title %></li>
+    <li>タイトル  <%= task.title %></li>
+    <li>内容 <%= task.description %></li>
+    <li>開始時間 <%= task.start_time.strftime("%Y-%m-%d %H:%M") %></li>
+    <li>終了時間 <%= task.end_time.strftime("%Y-%m-%d %H:%M") %></li>
+
+
+    <% # 作業時間を計算して表示 %>
+    <% work_duration = task.end_time - task.start_time %>
+    <li>作業時間: <%= format_duration(work_duration) %></li>
   <% end %>
 </ul>
+
