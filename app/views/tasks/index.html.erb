@@ -5,7 +5,7 @@
 
 <ul>
   <% if user_signed_in? %>
-    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
     <li>ようこそ、<%= current_user.name %>さん</li>
   <% else %>
     <li><%= link_to '新規登録', new_user_registration_path %></li>
@@ -32,12 +32,11 @@
 
 
 <ul>
-  <% @tasks.each do |task| %>
-    <li>タイトル  <%= task.title %></li>
+  <% current_user.tasks.each do |task| %>
+    <li>タイトル <%= task.title %></li>
     <li>内容 <%= task.description %></li>
     <li>開始時間 <%= task.start_time.strftime("%Y-%m-%d %H:%M") %></li>
     <li>終了時間 <%= task.end_time.strftime("%Y-%m-%d %H:%M") %></li>
-
 
     <% # 作業時間を計算して表示 %>
     <% work_duration = task.end_time - task.start_time %>

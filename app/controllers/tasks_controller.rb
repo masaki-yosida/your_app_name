@@ -1,8 +1,9 @@
 # app/controllers/tasks_controller.rb
 
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
     @new_task = Task.new
   end
 
