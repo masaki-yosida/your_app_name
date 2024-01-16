@@ -1,24 +1,48 @@
-# README
+# 歴史
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# アプリケーション名
+*ブックマジシャン
+# アプリケーション概要
 
-* Ruby version
 
-* System dependencies
+# URL
 
-* Configuration
+# テスト用アカウント
 
-* Database creation
 
-* Database initialization
+# 利用方法
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# アプリケーションを作成した背景
 
-* Deployment instructions
 
-* ...
+# 実装予定の機能
+
+
+# データベース設計
+
+# 画面遷移図
+
+# 開発環境
+*フロントエンド言語：JavaScript、HTML、CSS
+
+*バックエンドフレームワーク：Rails7.0.0 
+
+*バックエンド言語:Ruby3.2.0
+
+*ミドルウェア：Mysql0.5.5、PostgreSQL
+
+*インフラ：Render
+
+# 工夫したポイント
+
+# 改善点
+
+
+
+# 制作時間
+
+
+# 歴史
+
