@@ -2,7 +2,6 @@
 <h1>自己診断</h1>
 
 
-
 <ul>
   <% if user_signed_in? %>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
@@ -12,7 +11,7 @@
     <li><%= link_to 'ログイン', new_user_session_path %></li>
   <% end %>
 </ul>
-
+<li><%= link_to '詳細', edit_user_registration_path %></li>
 
 
 
