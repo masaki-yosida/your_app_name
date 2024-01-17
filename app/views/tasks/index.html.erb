@@ -27,8 +27,9 @@
 <% end %>
 
 <!-- 合計作業時間の表示 -->
-<h2>作業ごとの作業時間</h2>
+<h2>合計作業時間</h2>
 <ul>
+  <li>合計作業時間</li>
   <% if @total_duration_by_title.present? %>
     <% @total_duration_by_title.each do |title, total_duration| %>
       <li><%= "#{title}: #{format_duration(total_duration)}" %></li>
@@ -40,7 +41,9 @@
 
 
 <!-- 投稿しタイトルを大まかに表示 -->
+<h2>作業内容</h2>
 <ul>
+  <li>作業内容</li>
   <% @tasks.each do |task| %>
     <li>
       <%= link_to "#{task.title} (#{format_duration(task.duration)})", task_path(task), class: "btn btn-primary" %>

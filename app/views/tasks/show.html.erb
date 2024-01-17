@@ -1,7 +1,9 @@
 <!-- タスクの詳細 -->
-<h1><%= @task.title %></h1>
-<p>Description: <%= @task.description %></p>
-<p>Start Time: <%= @task.start_time %></p>
-<p>End Time: <%= @task.end_time %></p>
-<p>Duration: <%= format_duration(@task.duration) %></p>
-<%= link_to 'Back to Tasks', tasks_path %>
+<h1>作業名 <%= @task.title %></h1>
+<p>作業日: <%= @task.start_time.strftime("%Y-%m-%d") %></p>
+<p>開始時間: <%= @task.start_time.strftime("%H:%M") %></p>
+<p>終了時間: <%= @task.end_time.strftime("%H:%M") %></p>
+<p>作業時間: <%= format_duration(@task.duration) %></p>
+<p>作業内容: <%= @task.description %></p>
+<%= link_to 'TOPに戻る', tasks_path %>
+
