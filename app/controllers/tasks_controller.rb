@@ -18,6 +18,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+  
+    Rails.logger.info("Task with ID #{params[:id]} was successfully destroyed.")
+  
+    redirect_to tasks_path, notice: 'Task was successfully destroyed.'
+  end
+  
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
