@@ -1,7 +1,7 @@
 <!-- app/views/tasks/index.html.erb -->
 <h1>自己診断</h1>
 
-
+<!-- ユーザー関係 -->
 <ul>
   <% if user_signed_in? %>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
@@ -14,17 +14,7 @@
 </ul>
 
 
-
- 
-
- 
-
-
-
-
-
-
-
+<!-- タスクの追加 -->
 <%= form_with(model: @new_task, url: tasks_path, method: "post") do |form| %>
   <%= form.text_field :title, placeholder: "タスクを入力してください" %>
   <%= form.text_field :description, placeholder: "内容" %>
@@ -33,10 +23,10 @@
   <% current_time = Time.now.strftime("%Y-%m-%dT%H:%M") %>
   <%= form.datetime_local_field :end_time, value: current_time, placeholder: "終了日時を入力してください" %>
   <%= form.hidden_field :user_id, value: current_user.id %>
-
   <%= form.submit "追加する" %>
 <% end %>
 
+<!-- 合計作業時間の表示 -->
 <h2>作業ごとの作業時間</h2>
 <ul>
   <% if @total_duration_by_title.present? %>
@@ -49,7 +39,7 @@
 </ul>
 
 
-
+<!-- 投稿しタイトルを大まかに表示 -->
 <ul>
   <% @tasks.each do |task| %>
     <li>
