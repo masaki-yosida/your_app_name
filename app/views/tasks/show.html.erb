@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+<p>Description: <%= @task.description %></p>
+<p>Start Time: <%= @task.start_time %></p>
+<p>End Time: <%= @task.end_time %></p>
+<p>Duration: <%= format_duration(@task.duration) %></p>
+<%= link_to 'Back to Tasks', tasks_path %>
