@@ -13,12 +13,11 @@
 </ul>
 
 
-<li><%= link_to '編集', edit_user_registration_path %></li>
-<li>
+
   <% @tasks.each do |task| %>
-    <%= link_to "Show Task", task_path(task), class: "btn btn-primary" %>
+    <li><%= link_to "Show Task", task_path(task), class: "btn btn-primary" %></li>
   <% end %>
-</li>
+
 
 
 
@@ -48,7 +47,9 @@
   <% end %>
 </ul>
 
-
+  <% @tasks.each do |task| %>
+    <li><%= link_to "Show Task", task_path(task), class: "btn btn-primary" %></li>
+  <% end %>
 
 
 
