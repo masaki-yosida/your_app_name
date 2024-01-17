@@ -1,8 +1,8 @@
-<h3>ユーザー名</h3>
-<%= current_user.name %>
+ユーザー名<br>
+<%= current_user.name %><br>
 
-<h3>メールアドレス</h3>
-<%= current_user.email %>
+メールアドレス<br>
+<%= current_user.email %><br>
 
-
-<li><%= link_to '編集', edit_user_registration_path %></li>
+<%= link_to '編集', edit_user_registration_path %><br>
+<%= link_to '戻る', tasks_path %>
