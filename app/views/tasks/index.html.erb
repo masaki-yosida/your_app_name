@@ -11,7 +11,7 @@
     <li><%= link_to 'ログイン', new_user_session_path %></li>
   <% end %>
 </ul>
-<li><%= link_to '詳細', edit_user_registration_path %></li>
+<li><%= link_to '編集', edit_user_registration_path %></li>
 
 
 
@@ -28,6 +28,17 @@
 
   <%= form.submit "追加する" %>
 <% end %>
+
+<h2>作業ごとの作業時間</h2>
+<ul>
+  <% if @total_duration_by_title.present? %>
+    <% @total_duration_by_title.each do |title, total_duration| %>
+      <li><%= "#{title}: #{format_duration(total_duration)}" %></li>
+    <% end %>
+  <% else %>
+    <li>作業をして下さい</li>
+  <% end %>
+</ul>
 
 
 
@@ -46,13 +57,3 @@
   <% end %>
 </ul>
 
-<h2>作業ごとの作業時間</h2>
-<ul>
-  <% if @total_duration_by_title.present? %>
-    <% @total_duration_by_title.each do |title, total_duration| %>
-      <li><%= "#{title}: #{format_duration(total_duration)}" %></li>
-    <% end %>
-  <% else %>
-    <li>作業をして下さい</li>
-  <% end %>
-</ul>
