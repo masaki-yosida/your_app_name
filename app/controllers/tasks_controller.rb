@@ -14,6 +14,18 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to task_path(@task), notice: 'Task was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   def create
     @new_task = current_user.tasks.build(task_params)
