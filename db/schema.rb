@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2024_01_18_025748) do
   create_table "additional_user_infos", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -27,9 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_025748) do
     t.index ["user_id"], name: "index_additional_user_infos_on_user_id"
   end
 
-=======
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
->>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
 =======
 ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
 >>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
@@ -54,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
 <<<<<<< HEAD
-<<<<<<< HEAD
     t.string "avatar"
     t.string "address"
     t.string "city"
@@ -62,8 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
     t.string "postal_code"
     t.string "phone_number"
     t.date "date_of_birth"
-=======
->>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
 =======
 >>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
     t.index ["email"], name: "index_users_on_email", unique: true
