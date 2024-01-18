@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { applications: 'applications' }
   resources :users
   resources :tasks
   root to: 'tasks#index'
