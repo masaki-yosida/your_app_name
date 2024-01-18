@@ -7,10 +7,10 @@ class UserProfilesController < ApplicationController
   def edit
     @user_profile = UserProfile.find(params[:id])
   end
+  
+  
 
-  def new
-    @user_profile = UserProfile.new
-  end
+  
 
   def update
     @user_profile = UserProfile.find(params[:id])
