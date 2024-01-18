@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_18_033035) do
   create_table "tasks", charset: "utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -20,6 +20,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_profiles", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "address"
+    t.string "city"
+    t.string "country"
+    t.string "postal_code"
+    t.string "phone_number"
+    t.string "avatar"
+    t.string "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -36,4 +50,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_063731) do
   end
 
   add_foreign_key "tasks", "users"
+  add_foreign_key "user_profiles", "users"
 end
