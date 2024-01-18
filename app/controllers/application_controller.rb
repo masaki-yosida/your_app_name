@@ -1,8 +1,8 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
+<<<<<<< HEAD
 
   protected
 
@@ -17,3 +17,9 @@ class ApplicationController < ActionController::Base
     super(resource)
   end
 end
+=======
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+end
+>>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
