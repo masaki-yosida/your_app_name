@@ -2,8 +2,8 @@
 ユーザー名<br>
 <%= current_user.name %><br>
 
-メールアドレス<br>
+メールアドレス  <%= link_to '編集', edit_user_registration_path %><br>
 <%= current_user.email %><br>
 
-<%= link_to '編集', edit_user_registration_path %><br>
+
 <%= link_to '戻る', tasks_path %>
