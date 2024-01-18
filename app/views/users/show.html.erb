@@ -6,18 +6,44 @@
 <%= current_user.email %><br>
 
 <% if @user_profile %>
+
   <% if @user_profile.address.present? %>
-    <p><strong>Address:</strong> <%= @user_profile.address %></p>
+    <p><strong>住所:</strong> <%= @user_profile.address %></p>
   <% else %>
   <p>No user profile available.</p>
   <% end %>
   
 
-  <% if @user_profile.city.present? %>
-    <p><strong>City:</strong> <%= @user_profile.city %></p>
+  <% if @user_profile.postal_code.present? %>
+    <p><strong>郵便番号:</strong> <%= @user_profile.postal_code %></p>
   <% else %>
   <p>No user profile available.</p>
   <% end %>
+
+   <% if @user_profile.phone_number.present? %>
+    <p><strong>電話番号:</strong> <%= @user_profile.phone_number %></p>
+  <% else %>
+  <p>No user profile available.</p>
+  <% end %>
+
+
+
+  <% if @user_profile.gender.present? %>
+    <p><strong>性別:</strong> <%= @user_profile.gender %></p>
+  <% else %>
+  <p>No user profile available.</p>
+  <% end %>
+
+
+   <!-- 画像が保存できないのでエラー起きるから... 
+  <% if @user_profile.avatar.present? %>
+    <p> <%= @user_profile.avatar %></p>
+  <% else %>
+  <p>No user profile available.</p>
+  <% end %>
+  -->
+
+
 <% end %>
 
 <%= link_to '戻る', tasks_path %>
