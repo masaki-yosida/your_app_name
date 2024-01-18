@@ -1,54 +1,48 @@
-<h1>ユーザー情報</h1>
-ユーザー名<br>
-<%= current_user.name %><br>
+<h1><%= current_user.name %><strong>の詳細</strong></h1>
 
-メールアドレス  <%= link_to '編集', edit_user_registration_path %><br>
-<%= current_user.email %><br>
+<p><strong>ユーザー名:</strong> <%= current_user.name %></p>
+
+<p><strong>メールアドレス:</strong> <%= current_user.email %>　　<%= link_to 'ユーザー名、メールアドレスの編集', edit_user_registration_path %>
+
+
 
 <% if @user_profile %>
 
   <% if @user_profile.address.present? %>
     <p><strong>住所:</strong> <%= @user_profile.address %></p>
   <% else %>
-  <p>No user profile available.</p>
+  <p><strong>住所:空なので登録して下さい</p></strong>
   <% end %>
   
-
   <% if @user_profile.postal_code.present? %>
     <p><strong>郵便番号:</strong> <%= @user_profile.postal_code %></p>
   <% else %>
-  <p>No user profile available.</p>
+  <p>郵便番号:空なので登録して下さい</p>
   <% end %>
 
    <% if @user_profile.phone_number.present? %>
     <p><strong>電話番号:</strong> <%= @user_profile.phone_number %></p>
   <% else %>
-  <p>No user profile available.</p>
+  <p>電話番号:空なので登録して下さい</p>
   <% end %>
-
-
 
   <% if @user_profile.gender.present? %>
     <p><strong>性別:</strong> <%= @user_profile.gender %></p>
   <% else %>
-  <p>No user profile available.</p>
+  <p>性別:空なので登録して下さい</p>
   <% end %>
-
 
    <!-- 画像が保存できないのでエラー起きるから... 
   <% if @user_profile.avatar.present? %>
     <p> <%= @user_profile.avatar %></p>
   <% else %>
   <p>No user profile available.</p>
-  <% end %>
-  -->
-
+  <% end %>-->
 
 <% end %>
 
 <%= link_to '戻る', tasks_path %>
-<!-- app/views/user_profiles/edit.html.erb -->
-<%= link_to 'Edit Profile', new_user_profiles_path, class: 'btn btn-primary' %>
+<%= link_to '情報を登録する', new_user_profiles_path, class: 'btn btn-primary' %>
 
 
 
