@@ -5,6 +5,7 @@ class UserProfilesController < ApplicationController
   before_action :set_user_profile
   
   def edit
+    @user_profile = UserProfile.find(params[:id])
   end
 
   def new
@@ -12,8 +13,10 @@ class UserProfilesController < ApplicationController
   end
 
   def update
+    @user_profile = UserProfile.find(params[:id])
+  
     if @user_profile.update(user_profile_params)
-      redirect_to root_path, notice: 'User profile was successfully updated.'
+      redirect_to user_profile_path(@user_profile), notice: 'Profile updated successfully'
     else
       render :edit
     end
