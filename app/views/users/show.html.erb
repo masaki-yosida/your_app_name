@@ -5,6 +5,20 @@
 メールアドレス  <%= link_to '編集', edit_user_registration_path %><br>
 <%= current_user.email %><br>
 
+<% if @user_profile %>
+  <% if @user_profile.address.present? %>
+    <p><strong>Address:</strong> <%= @user_profile.address %></p>
+  <% else %>
+  <p>No user profile available.</p>
+  <% end %>
+  
+
+  <% if @user_profile.city.present? %>
+    <p><strong>City:</strong> <%= @user_profile.city %></p>
+  <% else %>
+  <p>No user profile available.</p>
+  <% end %>
+<% end %>
 
 <%= link_to '戻る', tasks_path %>
 <!-- app/views/user_profiles/edit.html.erb -->
