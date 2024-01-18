@@ -1,6 +1,7 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -18,8 +19,14 @@ class ApplicationController < ActionController::Base
   end
 end
 =======
+=======
+
+>>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end
+<<<<<<< HEAD
+>>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
+=======
 >>>>>>> parent of 510cf65 (デバイスと同じにしない為に消す)
