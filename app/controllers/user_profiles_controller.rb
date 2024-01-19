@@ -5,22 +5,19 @@ class UserProfilesController < ApplicationController
   before_action :set_user_profile
   
   def edit
-    @user_profile = UserProfile.find(params[:id])
+    @user_profile = current_user.user_profile
   end
 
-  def new
-    @user_profile = UserProfile.new
+ 
+def update
+  @user_profile = current_user.user_profile
+  if @user_profile.update(user_profile_params)
+    redirect_to root_path, notice: 'User profile was successfully updated.'
+  else
+    render :edit
   end
+end
 
-  def update
-    @user_profile = UserProfile.find(params[:id])
-  
-    if @user_profile.update(user_profile_params)
-      redirect_to user_profile_path(@user_profile), notice: 'Profile updated successfully'
-    else
-      render :edit
-    end
-  end
 
 
   def show
@@ -37,6 +34,18 @@ class UserProfilesController < ApplicationController
       render :new
     end
   end
+
+
+  def new
+    @user.user_profile.destroy if @user.user_profile
+    @user_profile = @user.build_user_profile
+
+    if @user_profile.save
+      redirect_to @user, notice: 'User profile was successfully created.'
+    else
+      render :new
+    end
+  end
   
 
 
@@ -47,6 +56,10 @@ class UserProfilesController < ApplicationController
   end
 
   def user_profile_params
-    params.require(:user_profile).permit(:address, :city, :country, :postal_code, :phone_number, :avatar, :gender)
+  params.require(:user_profile).permit(:address, :city, :country, :postal_code, :phone_number, :avatar, :gender)
+end
+
+  def set_user_profile
+    @user = User.find(params[:user_id])
   end
 end
